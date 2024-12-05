@@ -1,7 +1,24 @@
 import db from "../Database/index.js";
+
+/*
+_id: string;
+username: string;
+password: string;
+firstName: string;
+lastName: string;
+email: string;
+dob: string;
+role: string;
+loginId: string;
+section: string;
+lastActivity: string;
+totalActivity: string;
+*/
+
 let { users } = db;
 export const createUser = (user) => {
- const newUser = { ...user, _id: Date.now() };
+ const newUser = {_id: Date.now().toString(), firstName: "", lastName: "", email: "", dob: "", role: "STUDENT",
+  loginId: "", section: "", lastActivity: Date.now().toString(), totalActivity: "0", ...user}
  users = [...users, newUser];
  return newUser;
 };

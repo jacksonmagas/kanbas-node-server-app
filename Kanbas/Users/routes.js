@@ -36,7 +36,6 @@ export default function UserRoutes(app) {
     } else {
       res.status(401).json({ message: "Unable to login. Try again later." });
     }
-
   };
 
   const signout = (req, res) => {
