@@ -10,12 +10,14 @@ import "dotenv/config";
 import session from 'express-session';
 import AssignmentsRoutes from './Kanbas/Assignments/routes.js';
 import mongoose from 'mongoose';
+import model from './Kanbas/Users/model.js';
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://localhost:27017/kanbas"
 console.log(CONNECTION_STRING)
 mongoose.connect(CONNECTION_STRING)
 .then(() => console.log("Connected to DB"))
 .catch((error) => console.error("Error connecting to MongoDB Atlas:", error.message))
+console.log(model.find())
 
 const app = express()
 app.use(cors({
