@@ -1,6 +1,7 @@
 import * as dao from "./dao.js";
 import * as courseDao from "../Courses/dao.js";
 import * as enrollmentsDao from "../Enrollments/dao.js"
+import mongoose from "mongoose";
 
 export default function UserRoutes(app) {
   const createUser = async (req, res) => {
