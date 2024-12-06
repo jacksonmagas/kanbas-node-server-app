@@ -14,6 +14,8 @@ import mongoose from 'mongoose';
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://localhost:27017/kanbas"
 console.log(CONNECTION_STRING)
 mongoose.connect(CONNECTION_STRING)
+.then(() => console.log("Connected to DB"))
+.catch((error) => console.error("Error connecting to MongoDB Atlas:", error.message))
 
 const app = express()
 app.use(cors({
