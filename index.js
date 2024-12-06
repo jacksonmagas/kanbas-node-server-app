@@ -5,12 +5,10 @@ import cors from "cors";
 import UserRoutes from "./Kanbas/Users/routes.js"
 import CourseRoutes from "./Kanbas/Courses/routes.js"
 import ModuleRoutes from './Kanbas/Modules/routes.js';
-import EnrollmentRoutes from "./Kanbas/Enrollments/routes.js"
 import "dotenv/config";
 import session from 'express-session';
 import AssignmentsRoutes from './Kanbas/Assignments/routes.js';
 import mongoose from 'mongoose';
-import model from './Kanbas/Users/model.js';
 
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://localhost:27017/kanbas"
 console.log(CONNECTION_STRING)
@@ -47,7 +45,6 @@ UserRoutes(app)
 CourseRoutes(app)
 Hello(app)
 Lab5(app)
-EnrollmentRoutes(app)
 ModuleRoutes(app)
 AssignmentsRoutes(app)
 app.listen(process.env.PORT || 4000)
