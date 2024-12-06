@@ -15,10 +15,12 @@ import model from './Kanbas/Users/model.js';
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://localhost:27017/kanbas"
 console.log(CONNECTION_STRING)
 mongoose.connect(CONNECTION_STRING)
-.then(() => console.log("Connected to DB"))
+.then(() => {
+  console.log("Connected to DB")
+  console.log("DB name: ", mongoose.connection.db.databaseName)
+  console.log("Collections: ", mongoose.connection.listCollections())
+})
 .catch((error) => console.error("Error connecting to MongoDB Atlas:", error.message))
-console.log("DB name: ", mongoose.connection.db.databaseName)
-console.log("Collections: ", await mongoose.connection.listCollections())
 
 const app = express()
 app.use(cors({
