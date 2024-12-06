@@ -45,6 +45,20 @@ export const findUsersFiltered = ({role, name}) => {
 };
 export const findUserById = (userId) => model.findById(userId);
 export const findUserByUsername = (username) => model.findOne({username: username});
-export const findUserByCredentials = (username, password) => model.findOne({ username: username, password: password });
+export const findUserByCredentials = async (username, password) => {
+  console.log("Checking connection state:", mongoose.connection.readyState); // 1 = connected
+  try {
+    const user = await model.findOne({ username: username, password: password });
+    if (user) {
+      console.log("User found:", user);
+    } else {
+      console.log("No user found with the provided username and password.");
+    }
+    return user;
+  } catch (error) {
+    console.error("Error executing findOne query:", error.message);
+    return null;
+  }
+}
 export const updateUser = (userId, user) => model.updateOne({ _id: userId }, {$set: user});
 export const deleteUser = (userId) => model.deleteOne({ _id: userId });
