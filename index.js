@@ -39,7 +39,7 @@ if (process.env.NODE_ENV !== "development") {
     domain: process.env.NODE_SERVER_DOMAIN,
   };
 }
-console.log("Setting up session: " + sessionOptions);
+console.log(`Setting up session: ${sessionOptions}`);
 app.use(session(sessionOptions));
 
 UserRoutes(app)
