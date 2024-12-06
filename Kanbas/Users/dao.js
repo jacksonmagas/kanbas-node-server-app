@@ -1,5 +1,5 @@
 import model from "./model.js";
-import db from "../Database/index.js"
+import mongoose from "mongoose";
 
 /*
 _id: string;
