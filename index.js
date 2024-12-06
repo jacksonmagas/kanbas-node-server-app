@@ -17,7 +17,6 @@ console.log(CONNECTION_STRING)
 mongoose.connect(CONNECTION_STRING)
 .then(() => console.log("Connected to DB"))
 .catch((error) => console.error("Error connecting to MongoDB Atlas:", error.message))
-console.log(model.find())
 
 const app = express()
 app.use(cors({

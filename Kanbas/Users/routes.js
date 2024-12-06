@@ -40,6 +40,7 @@ export default function UserRoutes(app) {
     res.json(currentUser);async 
   };
   const signin = async (req, res) => {
+    console.log(model.find())
     const { username, password } = req.body;
     console.log(`${username} : ${password}`);
     const currentUser = await dao.findUserByCredentials(username, password);
