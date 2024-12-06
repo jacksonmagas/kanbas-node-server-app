@@ -40,6 +40,7 @@ export default function UserRoutes(app) {
     res.json(currentUser); 
   };
   const signin = async (req, res) => {
+    console.log("Collections: ", await mongoose.connection.listCollections())
     console.log(await dao.findAllUsers())
     const { username, password } = req.body;
     console.log(`${username} : ${password}`);
