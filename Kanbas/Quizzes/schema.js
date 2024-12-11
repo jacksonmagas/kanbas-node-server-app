@@ -21,10 +21,10 @@ const QuizSchema = new Schema({
         question: String,
         answer: {
           correctAnswer: Boolean,
+          caseSensitive: Boolean,
           answers: [{
             text: String,
             correct: Boolean,
-            caseSensitive: Boolean
           }]
         }
     }],
