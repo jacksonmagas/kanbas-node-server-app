@@ -30,5 +30,6 @@ const QuizSchema = new Schema({
     }],
     published: Boolean,
     points: Number
-});
+},
+{collection: "quizzes"});
 export default QuizSchema;
