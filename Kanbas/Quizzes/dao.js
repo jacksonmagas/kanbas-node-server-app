@@ -22,6 +22,7 @@ export function findPublishedQuizzesForCourse(quizId) {
 
 export function createQuiz(quiz) {
   delete quiz._id;
+  quiz.questions.forEach(q => delete q._id)
   console.log(`${JSON.stringify(quiz)}`)
   return model.create(quiz);
 }
@@ -31,5 +32,6 @@ export function deleteQuiz(quizId) {
 }
 
 export function updateQuiz(quizId, quizUpdates) {
+  quizUpdates.questions.forEach(q => delete q._id)
   return model.updateOne({ _id: quizId }, { $set: quizUpdates });
 }
