@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const enrollmentSchema = new mongoose.Schema(
+const quizAttemptSchema = new mongoose.Schema(
  {
    quiz: { type: mongoose.Schema.Types.ObjectId, ref: "QuizModel" },
    user:   { type: mongoose.Schema.Types.ObjectId, ref: "UserModel" },
