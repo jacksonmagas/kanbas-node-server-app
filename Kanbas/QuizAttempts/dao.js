@@ -7,7 +7,7 @@ export function findQuizAttempts(userId, quizId) {
 export function createQuizAttempt(quizAttempt) {
   delete quizAttempt._id;
   quizAttempt.answers.forEach(q => delete q._id)
-  return model.create(quiz);
+  return model.create(quizAttempt);
 }
 
 export function deleteQuizAttempt(quizAttemptId) {
