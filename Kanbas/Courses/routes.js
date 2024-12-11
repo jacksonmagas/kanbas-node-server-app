@@ -77,13 +77,8 @@ export default function CourseRoutes(app) {
 
   app.get("/api/courses/:courseId/quizzes", async (req, res) => {
     const { courseId } = req.params;
-    const quizzes = await quizzesDao.findQuizzesForCourse(courseId);
-    res.json(quizzes)
-  })
-
-  app.get("/api/courses/:courseId/quizzes/published", async (req, res) => {
-    const { courseId } = req.params;
-    const quizzes = await quizzesDao.findPublishedQuizzesForCourse(courseId);
+    const { title, published } = req.query;
+    const quizzes = await quizzesDao.findQuizzesFiltered(courseId, title, published);
     res.json(quizzes)
   })
 

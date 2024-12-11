@@ -1,7 +1,19 @@
 import model from "./model.js";
 
-export function findQuizzesForCourse(quizId) {
-  return model.find({course: quizId})
+export function findQuizzesForCourse(courseId) {
+  return model.find({course: courseId})
+}
+
+export function findQuizzesFiltered(courseId, title, published) {
+    let regex;
+    try {
+        regex = new RegExp(title, "i");
+    } catch (e) {
+        regex = new RegExp("^$");
+    }
+    const titleQuery = {course : courseId, title : { $regex: regex }};
+    const query = published ? {$and: [titleQuery, {published: true}]} : titleQuery;
+  return model.find(query);
 }
 
 export function findPublishedQuizzesForCourse(quizId) {
