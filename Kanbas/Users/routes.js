@@ -46,7 +46,7 @@ export default function UserRoutes(app) {
     console.log(currentUser);
     if (currentUser) {
       req.session["currentUser"] = currentUser;
-      console.log("Sending user " + currentUser);
+      console.log("Sending user " + currentUser + " for session " + req.session);
       res.json(currentUser);
     } else {
       res.status(401).json({ message: "Unable to login. Try again later." });
@@ -71,6 +71,7 @@ export default function UserRoutes(app) {
     const currentUser = req.session["currentUser"];
     console.log("finding courses" + req)
     if (!currentUser) {
+      console.log(`no current user for session ${req.session}`)
       res.sendStatus(401);
       return;
     }
